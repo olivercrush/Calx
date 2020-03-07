@@ -8,7 +8,7 @@ class TrainingSession:
 
     def __init__(self):
         for i in range(0, 10):
-            tmp = u.TrainingUnit()
+            tmp = u.TrainingUnit(0)
             self.unitTimes.append(tmp.enterAnswer())
 
         utils.clear()

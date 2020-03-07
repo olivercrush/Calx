@@ -8,8 +8,11 @@ class TrainingUnit:
     secondInt = 0
     result = 0
 
-    def __init__(self):
-        self.unitType = random.randint(0, 3)
+    def __init__(self, utype = -1):
+        if utype == -1:
+            self.unitType = random.randint(0, 3)
+        else:
+            self.unitType = utype
         self.generateNumbers()
 
     def enterAnswer(self):
@@ -18,7 +21,10 @@ class TrainingUnit:
         while ans != self.result:
             utils.clear()
             self.showUnit()
-            ans = int(input())
+            try:
+                ans = int(input())
+            except ValueError:
+                ans = 0
 
         return (time.time() - startTime)
 
