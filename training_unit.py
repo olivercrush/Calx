@@ -1,6 +1,6 @@
 import random
-import os
 import time
+import utils
 
 class TrainingUnit:
     unitType = -1
@@ -12,17 +12,11 @@ class TrainingUnit:
         self.unitType = random.randint(0, 3)
         self.generateNumbers()
 
-    def clear(self):
-        if (os.name == 'nt'):
-            os.system("cls")
-        else:
-            os.system("clear")
-
     def enterAnswer(self):
         ans = 0
         startTime = time.time()
         while ans != self.result:
-            #self.clear()
+            utils.clear()
             self.showUnit()
             ans = int(input())
 
@@ -48,7 +42,6 @@ class TrainingUnit:
                 self.result = self.firstInt * self.secondInt
     
     def showUnit(self):
-
         strFirstInt = str(self.firstInt)
         strSecondInt = str(self.secondInt)
         strResult = str(self.result)
