@@ -5,4 +5,4 @@ class TrainingSession:
     def __init__(self):
         for i in range(0, 10):
             tmp = u.TrainingUnit()
-            tmp.showUnit()
+            print(str(tmp.enterAnswer()) + "s")
