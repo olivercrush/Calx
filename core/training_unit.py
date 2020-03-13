@@ -1,6 +1,6 @@
 import random
 import time
-import utils
+import core.utils as utils
 
 class TrainingUnit:
     unitType = -1
