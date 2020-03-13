@@ -1,0 +1,30 @@
+#:kivy 1.0.9
+
+<MenuBtn@Button>:
+    size: 200, 50
+    center_x: self.parent.width / 2
+    font_size: 14
+
+<Calx>:    
+    startSessionBtn: start_session_btn
+    workloadBtn: workload_btn
+    exitBtn: exit_btn
+
+    MenuBtn:
+        id: start_session_btn
+        text: 'Commencer une session'
+        center_y: (root.height / 2) + 75
+        on_press: self.parent.startSession()
+
+    MenuBtn:
+        id: workload_btn
+        text: 'Charge mentale'
+        center_y: (root.height / 2)
+        on_press: self.parent.workload()
+
+    MenuBtn:
+        id: exit_btn
+        text: 'Quitter'
+        center_y: (root.height / 2) - 75
+        on_press: self.parent.exitApp()
+

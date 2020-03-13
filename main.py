@@ -1,24 +1,30 @@
-from tkinter import *
-import core.training_session as s
+from kivy.app import App 
+from kivy.uix.widget import Widget
+from kivy.properties import (
+    NumericProperty, ReferenceListProperty, ObjectProperty
+)
+from kivy.vector import Vector
+from kivy.clock import Clock
+from random import randint
 
-class Window(Frame):
-    def __init__(self, master=None):
-        Frame.__init__(self, master)
-        self.master = master
-        self.init_window()
+class Calx(Widget):
+    startSessionBtn = ObjectProperty(None)
+    workloadBtn = ObjectProperty(None)
+    exitBtn = ObjectProperty(None)
 
-    def init_window(self):
-        self.master.title("Calx")
-        self.pack(fill=BOTH, expand=1)
-        quitLabel = Label(self, text="Quitter")
-        quitLabel.place(x=0, y=0)
+    def startSession(self):
+        print("Start session")
 
-    def exit_window(self):
-        exit()
+    def workload(self):
+        print("Workload")
 
-#session = s.TrainingSession()
+    def exitApp(self):
+        print("Exit")
 
-root = Tk()
-root.geometry("400x300")
-app = Window(root)
-root.mainloop()
+class CalxApp(App):
+    def build(self):
+        calx = Calx()
+        return calx
+
+if __name__ == '__main__':
+    CalxApp().run()
