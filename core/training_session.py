@@ -1,4 +1,5 @@
-import core.training_unit as u
+import training_unit as u
+import utils
 
 class TrainingSession:
 
