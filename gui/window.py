@@ -1,4 +1,5 @@
 import pygame
+import gui.mainScreen as mainScreen
 
 class Window:
 
@@ -12,10 +13,7 @@ class Window:
         self.size = (800, 600)
         self.screen = pygame.display.set_mode(self.size)
 
-        font = pygame.font.Font(None, 48)
-        self.title = font.render("CALX", True, (0, 0, 0))
-        font = pygame.font.Font(None, 26)
-        self.undertitle = font.render("The Personal Math Trainer", True, (0, 0, 0))
+        self.mScreen = mainScreen.MainScreen()
 
     def startScreen(self):
         running = True
@@ -24,7 +22,6 @@ class Window:
                 if event.type == pygame.QUIT:
                     running = False
 
-            self.screen.fill((245, 245, 245))
-            self.screen.blit(self.title, (self.size[0] / 2 - self.title.get_width() / 2, 30))
-            self.screen.blit(self.undertitle, (self.size[0] / 2 - self.undertitle.get_width() / 2, 80))
+            self.screen = self.mScreen.display(self.screen, self.size)
+
             pygame.display.flip()
