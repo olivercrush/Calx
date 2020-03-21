@@ -13,7 +13,7 @@ class Window:
         self.size = (800, 600)
         self.screen = pygame.display.set_mode(self.size)
 
-        self.mScreen = mainScreen.MainScreen()
+        self.mScreen = mainScreen.MainScreen(self.size)
 
     def startScreen(self):
         running = True
