@@ -11,17 +11,24 @@ class Window:
         pygame.display.set_caption("Calx")
 
         self.size = (800, 600)
-        self.screen = pygame.display.set_mode(self.size)
+        self.callbacks = [
+            self.stopApp
+        ]
 
-        self.mScreen = mainScreen.MainScreen(self.size)
+        self.screen = pygame.display.set_mode(self.size)
+        self.mScreen = mainScreen.MainScreen(self.size, self.callbacks)
 
     def startScreen(self):
-        running = True
-        while running:
+        self.running = True
+        while self.running:
             for event in pygame.event.get():
+                self.mScreen.handleEvent(event)
                 if event.type == pygame.QUIT:
-                    running = False
+                    self.running = False
 
             self.screen = self.mScreen.display(self.screen, self.size)
 
             pygame.display.flip()
+
+    def stopApp(self):
+        self.running = False
