@@ -16,6 +16,7 @@ class Window:
         ]
 
         self.screen = pygame.display.set_mode(self.size)
+        
         self.mScreen = mainScreen.MainScreen(self.size, self.callbacks)
 
     def startScreen(self):

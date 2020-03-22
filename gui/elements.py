@@ -1,4 +1,5 @@
 import pygame
+import time
 
 class Text:
     def __init__(self, content, pos, size):
@@ -20,11 +21,11 @@ class Button:
         self.size = size
         self.callback = callback
         self.text = Text(content, (size[0] / 2, size[1] / 2), 20)
-        self.element = self.createElement()
+        self.element = self.createElement((155, 155, 155))
 
-    def createElement(self):
+    def createElement(self, backgroundColor):
         element = pygame.Surface(self.size)
-        element.fill((155, 155, 155))
+        element.fill(backgroundColor)
         element.blit(self.text.getElement(), self.text.getRect())
         return element
 
@@ -35,8 +36,15 @@ class Button:
         return (self.element).get_rect(center=self.pos)
 
     def handleEvent(self, event):
-        if self.callback is not None:
-            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                if self.getRect().collidepoint(event.pos):
+        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+            if self.getRect().collidepoint(event.pos):
+                self.element = self.createElement((100, 100, 100))
+                if self.callback is not None:
                     self.callback()
+        
+        if event.type == pygame.MOUSEMOTION:
+            if self.getRect().collidepoint(event.pos):
+                self.element = self.createElement((140, 140, 140))
+            elif not self.getRect().collidepoint(event.pos):
+                self.element = self.createElement((155, 155, 155))
         return 0
