@@ -14,8 +14,16 @@ class Text:
 class Button:
     def __init__(self, content, pos, size, callback):
         self.pos = pos
-        self.element = (pygame.font.Font(None, 40)).render(content, True, (200, 200, 200))
+        self.size = size
         self.callback = callback
+        self.text = Text(content, (size[0] / 2, size[1] / 2), 20)
+        self.element = self.createElement()
+
+    def createElement(self):
+        element = pygame.Surface(self.size)
+        element.fill((155, 155, 155))
+        element.blit(self.text.getElement(), self.text.getRect())
+        return element
 
     def getElement(self):
         return self.element
