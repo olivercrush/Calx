@@ -1,5 +1,6 @@
 import pygame
 import gui.mainScreen as mainScreen
+import gui.sessionScreen as sessionScreen
 
 class Window:
 
@@ -12,24 +13,36 @@ class Window:
 
         self.size = (800, 600)
         self.callbacks = [
-            self.stopApp
+            self.stopApp,
+            self.showMainScreen,
+            self.showSessionScreen
         ]
 
         self.screen = pygame.display.set_mode(self.size)
         
-        self.mScreen = mainScreen.MainScreen(self.size, self.callbacks)
+        self.currentScreen = 0
+        self.guiScreens = [
+            mainScreen.MainScreen(self.size, self.callbacks),
+            sessionScreen.SessionScreen(self.size, self.callbacks)
+        ]
+
 
     def startScreen(self):
         self.running = True
         while self.running:
             for event in pygame.event.get():
-                self.mScreen.handleEvent(event)
+                self.guiScreens[self.currentScreen].handleEvent(event)
                 if event.type == pygame.QUIT:
                     self.running = False
 
-            self.screen = self.mScreen.display(self.screen, self.size)
-
+            self.screen = self.guiScreens[self.currentScreen].display(self.screen, self.size)
             pygame.display.flip()
 
     def stopApp(self):
         self.running = False
+
+    def showMainScreen(self):
+        self.currentScreen = 0
+
+    def showSessionScreen(self):
+        self.currentScreen = 1

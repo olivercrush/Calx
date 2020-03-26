@@ -1,6 +1,10 @@
 import pygame
 import time
 
+#class Line:
+#    def __init__(self, points, color):
+#        self.element = pygame.surface
+
 class Text:
     def __init__(self, content, pos, size):
         self.pos = pos
@@ -21,9 +25,9 @@ class Button:
         self.size = size
         self.callback = callback
         self.text = Text(content, (size[0] / 2, size[1] / 2), 20)
-        self.element = self.createElement((155, 155, 155))
+        self.element = self.createElement()
 
-    def createElement(self, backgroundColor):
+    def createElement(self, backgroundColor = (155, 155, 155)):
         element = pygame.Surface(self.size)
         element.fill(backgroundColor)
         element.blit(self.text.getElement(), self.text.getRect())
