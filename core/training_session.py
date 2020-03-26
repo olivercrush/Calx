@@ -1,18 +1,13 @@
-import training_unit as u
-import utils
+import core.training_unit as u
+import core.utils
 
 class TrainingSession:
-
-    unitTimes = []
-    sessionWorkload = 0
-
     def __init__(self):
-        for i in range(0, 10):
-            tmp = u.TrainingUnit(0)
-            self.unitTimes.append(tmp.enterAnswer())
+        self.units = []
+        self.sessionWorkload = 0
 
-        utils.clear()
-        for x in self.unitTimes:
-            self.sessionWorkload += x
-        self.sessionWorkload /= len(self.unitTimes)
-        print("Session workload : " + str(self.sessionWorkload) + "s")
+        for i in range(0, 10):
+            self.units.append(u.TrainingUnit())
+
+    def getUnits(self):
+        return self.units

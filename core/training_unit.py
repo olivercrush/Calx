@@ -3,16 +3,16 @@ import time
 import core.utils as utils
 
 class TrainingUnit:
-    unitType = -1
-    firstInt = 0
-    secondInt = 0
-    result = 0
-
+    
     def __init__(self, utype = -1):
         if utype == -1:
             self.unitType = random.randint(0, 3)
         else:
             self.unitType = utype
+
+        self.firstInt = 0
+        self.secondInt = 0
+        self.result = 0
         self.generateNumbers()
 
     def enterAnswer(self):
@@ -42,21 +42,8 @@ class TrainingUnit:
             self.secondInt = random.randint(1, 99)
             if self.unitType == 0:
                 self.result = self.firstInt + self.secondInt
-            elif self.unitType == 1:
-                self.result = self.firstInt - self.secondInt
             elif self.unitType == 2:
                 self.result = self.firstInt * self.secondInt
     
-    def showUnit(self):
-        strFirstInt = str(self.firstInt)
-        strSecondInt = str(self.secondInt)
-        strResult = str(self.result)
-
-        if self.unitType == 0:
-            print(strFirstInt + " + " + strSecondInt + " = ")
-        elif self.unitType == 1:
-            print(strFirstInt + " - " + strSecondInt + " = ")
-        elif self.unitType == 2:
-            print(strFirstInt + " * " + strSecondInt + " = ")
-        elif self.unitType == 3:
-            print(strFirstInt + " / " + strSecondInt + " = ")
+    def getUnitData(self):
+        return (self.firstInt, self.secondInt, self.unitType, self.result)
