@@ -1,14 +1,11 @@
 import pygame
-import time
 
-#class Line:
-#    def __init__(self, points, color):
-#        self.element = pygame.surface
-
-class Text:
-    def __init__(self, content, pos, size):
+class Rectangle:
+    def __init__(self, pos, size):
         self.pos = pos
-        self.element = (pygame.font.Font(None, size)).render(content, True, (0, 0, 0))
+        self.size = size
+        self.element = pygame.Surface(self.size)
+        self.element.fill((0, 0, 0))
 
     def getElement(self):
         return self.element
@@ -19,12 +16,36 @@ class Text:
     def handleEvent(self, event):
         return 0
 
+class Text:
+    def __init__(self, content, pos, size, alignment):
+        self.pos = pos
+        self.size = size
+        self.alignment = alignment
+        self.element = (pygame.font.Font(None, self.size)).render(content, True, (0, 0, 0))
+
+    def changeText(self, content):
+        self.element = (pygame.font.Font(None, self.size)).render(content, True, (0, 0, 0))
+
+    def getElement(self):
+        return self.element
+
+    def getRect(self):
+        if self.alignment == 1:
+            return (self.element).get_rect(center=self.pos)
+        elif self.alignment == 2:
+            return (self.element).get_rect(topright=self.pos)
+        else:
+            return (self.element).get_rect(topleft=self.pos)
+
+    def handleEvent(self, event):
+        return 0
+
 class Button:
     def __init__(self, content, pos, size, callback):
         self.pos = pos
         self.size = size
         self.callback = callback
-        self.text = Text(content, (size[0] / 2, size[1] / 2), 20)
+        self.text = Text(content, (size[0] / 2, size[1] / 2), 20, 1)
         self.element = self.createElement()
 
     def createElement(self, backgroundColor = (155, 155, 155)):

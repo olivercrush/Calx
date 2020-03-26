@@ -6,9 +6,10 @@ class SessionScreen:
     def __init__(self, size, callbacks):
         self.background = (245, 245, 245)
         self.elements = [
-            elements.Text("   42", (size[0] / 2, 150), 50),
-            elements.Text("   53", (size[0] / 2, 200), 50),
-            elements.Text("+", (size[0] / 2 - 50, 195), 50),
+            elements.Text("420", (size[0] / 2 + 60, 150), 50, 2),
+            elements.Text("5356", (size[0] / 2 + 60, 190), 50, 2),
+            elements.Text("+", (size[0] / 2 - 60, 190), 50, 0),
+            elements.Rectangle((size[0] / 2, 230), (150, 2)),
         ]
 
     def handleEvent(self, event):
