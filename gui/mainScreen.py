@@ -6,12 +6,12 @@ class MainScreen:
     def __init__(self, size, callbacks):
         self.background = (245, 245, 245)
         self.elements = [
-            elements.Text("CALX", (size[0] / 2, 30), 48, 1),
-            elements.Text("The Personal Math Trainer", (size[0] / 2, 80), 26, 1),
+            elements.Text("CALX", (size[0] / 2, 60), 48, 1),
+            elements.Text("The Personal Math Trainer", (size[0] / 2, 110), 26, 1),
             elements.Text("by @olivercrush (github)", (size[0] - 70, size[1] - 10), 16, 1),
-            elements.Button("Commencer une session", (size[0] / 2, 200), (200, 50), callbacks[2]),
-            elements.Button("Voir l'historique", (size[0] / 2, 260), (200, 50), None),
-            elements.Button("Quitter", (size[0] / 2, 320), (200, 50), callbacks[0])
+            elements.Button("Commencer une session", (size[0] / 2, 230), (200, 50), callbacks[3]),
+            elements.Button("Voir l'historique", (size[0] / 2, 290), (200, 50), None),
+            elements.Button("Quitter", (size[0] / 2, 350), (200, 50), callbacks[0])
         ]
 
     def handleEvent(self, event):

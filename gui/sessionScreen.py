@@ -15,7 +15,7 @@ class SessionScreen:
             elements.Text("+", (size[0] / 2 - 60, 190), 50, 0),
             elements.Rectangle((size[0] / 2, 230), (150, 2)),
             elements.Text("5776", (size[0] / 2 + 60, 240), 50, 2),
-            elements.Text(str(self.currentUnit + 1) + "/10", (size[0] / 2, size[1] - 50), 20, 0),
+            elements.Text(str(self.currentUnit + 1) + "/10", (size[0] / 2, size[1] - 50), 20, 1),
             elements.Button("Suivant", (size[0] / 2, size[1] - 150), (200, 50), self.updateCurrentUnit),
         ]
 

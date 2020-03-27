@@ -7,3 +7,4 @@ Todo :
 - Show unit result
 - Stock user data
 - Create stat graph
+- Create several session difficulties
