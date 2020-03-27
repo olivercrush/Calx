@@ -26,7 +26,7 @@ class Window:
         self.guiScreens = [
             mainScreen.MainScreen(self.size, self.callbacks),
             sessionScreen.SessionScreen(self.size, self.callbacks),
-            waitingScreen.WaitingScreen(self.size, self.callbacks, 6)
+            waitingScreen.WaitingScreen(self.size, self.callbacks, 5)
         ]
 
 

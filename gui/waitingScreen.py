@@ -2,6 +2,9 @@ import pygame
 import gui.elements as elements
 import time
 
+COUNTEVENT = pygame.USEREVENT+1
+t = 1000
+
 class WaitingScreen:
 
     def __init__(self, size, callbacks, count):
@@ -13,6 +16,8 @@ class WaitingScreen:
             elements.Text(str(count), (size[0] / 2, 170), 50, 1),
         ]
 
+        pygame.time.set_timer(COUNTEVENT, t)
+
     def updateCounter(self):
         if self.count - 1 > 0:
             self.count -= 1
@@ -20,18 +25,18 @@ class WaitingScreen:
         else:
             self.callbacks[2]()
 
+
     def handleEvent(self, event):
-        for e in self.elements:
-            e.handleEvent(event)
+        if event.type == COUNTEVENT:
+            self.updateCounter()
+        else:
+            for e in self.elements:
+                e.handleEvent(event)
 
     def display(self, screen, size):
         screen.fill(self.background)
 
-        self.updateCounter()
-        time.sleep(1)
-
         for e in self.elements:
             screen.blit(e.getElement(), e.getRect())
-
 
         return screen
