@@ -45,6 +45,8 @@ class Window:
         self.running = False
 
     def showMainScreen(self):
+        self.guiScreens[1] = sessionScreen.SessionScreen(self.size, self.callbacks)
+        self.guiScreens[2] = waitingScreen.WaitingScreen(self.size, self.callbacks, 5)
         self.currentScreen = 0
 
     def showSessionScreen(self):

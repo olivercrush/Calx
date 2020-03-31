@@ -14,6 +14,7 @@ class WaitingScreen:
         self.background = (245, 245, 245)
         self.elements = [
             elements.Text(str(count), (size[0] / 2, 170), 50, 1),
+            elements.Button("Annuler", (size[0] / 2, 250), (200, 50), self.callbacks[1]),
         ]
 
         pygame.time.set_timer(COUNTEVENT, t)
