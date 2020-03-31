@@ -47,7 +47,7 @@ class SessionScreen:
             elif data[2] == 3:
                 self.elements[2].changeText("÷")
         else:
-            self.callbacks[1]()
+            self.callbacks[4](5)
 
     def handleEvent(self, event):
         self.checkUserInput(event)

@@ -2,6 +2,7 @@ import pygame
 import gui.mainScreen as mainScreen
 import gui.sessionScreen as sessionScreen
 import gui.waitingScreen as waitingScreen
+import gui.endSessionScreen as endSessionScreen
 
 class Window:
 
@@ -18,6 +19,7 @@ class Window:
             self.showMainScreen,
             self.showSessionScreen,
             self.showWaitingScreen,
+            self.showEndSessionScreen,
         ]
 
         self.screen = pygame.display.set_mode(self.size)
@@ -26,7 +28,8 @@ class Window:
         self.guiScreens = [
             mainScreen.MainScreen(self.size, self.callbacks),
             sessionScreen.SessionScreen(self.size, self.callbacks),
-            waitingScreen.WaitingScreen(self.size, self.callbacks, 5)
+            waitingScreen.WaitingScreen(self.size, self.callbacks, 3),
+            endSessionScreen.EndSessionScreen(self.size, self.callbacks),
         ]
 
 
@@ -54,3 +57,7 @@ class Window:
 
     def showWaitingScreen(self):
         self.currentScreen = 2
+
+    def showEndSessionScreen(self, result):
+        self.guiScreens[3] = endSessionScreen.EndSessionScreen(self.size, self.callbacks, result)
+        self.currentScreen = 3
