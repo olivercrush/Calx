@@ -1,4 +1,5 @@
 import pygame
+import time
 import gui.elements as elements
 import core.training_session as session
 
@@ -9,6 +10,7 @@ class SessionScreen:
         self.callbacks = callbacks
         self.trainingSession = session.TrainingSession()
         self.userAnswer = ""
+        self.startTime = time.time()
 
         self.background = (245, 245, 245)
         self.elements = [
@@ -18,7 +20,7 @@ class SessionScreen:
             elements.Rectangle((size[0] / 2, 230), (150, 2)),
             elements.Text("", (size[0] / 2 + 60, 240), 50, 2),
             elements.Text(str(self.currentUnit + 1) + "/10", (size[0] / 2, size[1] - 50), 20, 1),
-            #elements.Button("Suivant", (size[0] / 2, size[1] - 150), (200, 50), self.updateCurrentUnit),
+            elements.Button("Suivant", (size[0] / 2, size[1] - 150), (200, 50), self.updateCurrentUnit),
         ]
 
         self.updateCurrentUnit()
@@ -29,8 +31,13 @@ class SessionScreen:
             self.updateCurrentUnit()
 
     def updateCurrentUnit(self):
-        self.userAnswer = ""
+        if self.currentUnit >= 0:
+            self.userAnswer = ""
+            self.trainingSession.getUnits()[self.currentUnit].setUnitTime(time.time() - self.startTime)
+            print(self.trainingSession.getUnits()[self.currentUnit].getUnitTime())
+
         if self.currentUnit < 9:
+            self.startTime = time.time()
             self.currentUnit += 1 
             data = self.trainingSession.getUnits()[self.currentUnit].getUnitData()
             self.elements[0].changeText(str(data[0]))
@@ -47,7 +54,8 @@ class SessionScreen:
             elif data[2] == 3:
                 self.elements[2].changeText("÷")
         else:
-            self.callbacks[4](5)
+            print(self.trainingSession.getAverageTime())
+            self.callbacks[4](self.trainingSession.getAverageTime())
 
     def handleEvent(self, event):
         self.checkUserInput(event)

@@ -13,6 +13,7 @@ class TrainingUnit:
         self.firstInt = 0
         self.secondInt = 0
         self.result = 0
+        self.time = 0
         self.generateNumbers()
 
     def enterAnswer(self):
@@ -44,6 +45,12 @@ class TrainingUnit:
                 self.result = self.firstInt + self.secondInt
             elif self.unitType == 2:
                 self.result = self.firstInt * self.secondInt
+
+    def setUnitTime(self, time):
+        self.time = time
+    
+    def getUnitTime(self):
+        return self.time
     
     def getUnitData(self):
         return (self.firstInt, self.secondInt, self.unitType, self.result)

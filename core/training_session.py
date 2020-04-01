@@ -11,3 +11,10 @@ class TrainingSession:
 
     def getUnits(self):
         return self.units
+
+    def getAverageTime(self):
+        unitSum = 0
+        for u in self.units:
+            unitSum += u.getUnitTime()
+
+        return round(unitSum / len(self.units), 2)
