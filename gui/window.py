@@ -53,6 +53,7 @@ class Window:
         self.currentScreen = 0
 
     def showSessionScreen(self):
+        self.guiScreens[1] = sessionScreen.SessionScreen(self.size, self.callbacks)
         self.currentScreen = 1
 
     def showWaitingScreen(self):

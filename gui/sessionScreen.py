@@ -20,7 +20,7 @@ class SessionScreen:
             elements.Rectangle((size[0] / 2, 230), (150, 2)),
             elements.Text("", (size[0] / 2 + 60, 240), 50, 2),
             elements.Text(str(self.currentUnit + 1) + "/10", (size[0] / 2, size[1] - 50), 20, 1),
-            elements.Button("Suivant", (size[0] / 2, size[1] - 150), (200, 50), self.updateCurrentUnit),
+            #elements.Button("Suivant", (size[0] / 2, size[1] - 150), (200, 50), self.updateCurrentUnit),
         ]
 
         self.updateCurrentUnit()

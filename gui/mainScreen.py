@@ -10,8 +10,7 @@ class MainScreen:
             elements.Text("The Personal Math Trainer", (size[0] / 2, 110), 26, 1),
             elements.Text("by @olivercrush (github)", (size[0] - 70, size[1] - 10), 16, 1),
             elements.Button("Commencer une session", (size[0] / 2, 230), (200, 50), callbacks[3]),
-            elements.Button("Voir l'historique", (size[0] / 2, 290), (200, 50), None),
-            elements.Button("Quitter", (size[0] / 2, 350), (200, 50), callbacks[0])
+            elements.Button("Quitter", (size[0] / 2, 290), (200, 50), callbacks[0])
         ]
 
     def handleEvent(self, event):
